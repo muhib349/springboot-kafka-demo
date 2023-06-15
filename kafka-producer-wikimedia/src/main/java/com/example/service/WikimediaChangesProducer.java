@@ -4,6 +4,7 @@ import com.example.handler.WikimediaChangesHandler;
 import com.launchdarkly.eventsource.EventSource;
 import com.launchdarkly.eventsource.background.BackgroundEventHandler;
 import com.launchdarkly.eventsource.background.BackgroundEventSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,16 @@ public class WikimediaChangesProducer {
 
     private KafkaTemplate<String, String> kafkaTemplate;
 
+    @Value("${spring.kafka.topic.name}")
+    private String topicName;
+
     public WikimediaChangesProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     public void sendMessage() throws InterruptedException {
-        String topic = "wikimedia-recent-change";
 
-        BackgroundEventHandler eventHandler = new WikimediaChangesHandler(topic, kafkaTemplate);
+        BackgroundEventHandler eventHandler = new WikimediaChangesHandler(topicName, kafkaTemplate);
         String url = "https://stream.wikimedia.org/v2/stream/recentchange";
 
 

@@ -21,8 +21,8 @@ public class KafkaWikimediaConsumer {
 
 
     @KafkaListener(
-            topics = "wikimedia-recent-change",
-            groupId = "myGroup"
+            topics = "${spring.kafka.topic.name}",
+            groupId = "${spring.kafka.consumer.group-id}"
     )
     public void consume(String eventMessage){
         LOGGER.info(String.format("Event message received -> %s", eventMessage));
