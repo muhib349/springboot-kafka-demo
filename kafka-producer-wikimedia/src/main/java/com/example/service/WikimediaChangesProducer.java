@@ -29,11 +29,11 @@ public class WikimediaChangesProducer {
         String url = "https://stream.wikimedia.org/v2/stream/recentchange";
 
 
-        EventSource.Builder eventSource = new EventSource
+        EventSource.Builder builder = new EventSource
                 .Builder(URI.create(url));
 
         BackgroundEventSource eventSource1 = new BackgroundEventSource
-                .Builder(eventHandler, eventSource)
+                .Builder(eventHandler, builder)
                 .build();
 
         eventSource1.start();
