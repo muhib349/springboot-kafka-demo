@@ -30,6 +30,6 @@ This application is responsible for listening to any events published in the Kaf
 |---------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | D:\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties                                           | To start the ZooKeeper service        |
 | D:\kafka>.\bin\windows\kafka-server-start.bat .\config\server.properties                                                  | To start the Kafka broker service     |
-| D:\kafka>.\bin\windows\kafka-topics.bat --create --topic <topic-name> --bootstrap-server localhost:9092                   | To create a topic to store the events |
-| D:\kafka>.\bin\windows\kafka-console-producer.bat --topic <topic-name> --bootstrap-server localhost:9092                  | To write some events into the topic   |
-| D:\kafka>.\bin\windows\kafka-console-consumer.bat --topic <topic-name> --from-beginning --bootstrap-server localhost:9092 | To read the events                    |
+| D:\kafka>.\bin\windows\kafka-topics.bat --create --topic `topic-name` --bootstrap-server localhost:9092                   | To create a topic to store the events |
+| D:\kafka>.\bin\windows\kafka-console-producer.bat --topic `topic-name` --bootstrap-server localhost:9092                  | To write some events into the topic   |
+| D:\kafka>.\bin\windows\kafka-console-consumer.bat --topic `topic-name` --from-beginning --bootstrap-server localhost:9092 | To read the events                    |
